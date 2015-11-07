@@ -1,4 +1,4 @@
-package models.Hibernate;
+package models.hibernate;
 
 /**
  * Created by Jose on 06-11-15.

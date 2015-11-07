@@ -7,7 +7,7 @@ import java.util.UUID;
 
 
 @MappedSuperclass
-public class EntidadAutoLongAltKey extends GenericModel
+public abstract class EntidadAutoLongAltKey extends GenericModel
 {
 
     @Id

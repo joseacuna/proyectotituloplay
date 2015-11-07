@@ -1,13 +1,14 @@
 package models;
-
+import play.db.jpa.JPA;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+
 
 /**
  * Created by Jose on 06-11-15.
  */
 @Entity
+@SequenceGenerator(name = "idAutoGen",sequenceName = "seq_establecimiento")
 public class Establecimiento extends EntidadAutoLongAltKey {
 
     public String nombreEdificio;

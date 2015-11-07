@@ -5,12 +5,16 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="Play!" />
+        </datasource-mapping>
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="Play!" />
+        </datasource-map>
         <naming-strategy-map />
       </configuration>
     </facet>
