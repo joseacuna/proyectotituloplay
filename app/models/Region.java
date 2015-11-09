@@ -54,6 +54,11 @@ public class Region extends Model{
         this.numero = numero;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     public static List<Region> findAllRegionesByIdPais(Long id_pais) {
         List<Region> regiones = JPA.em().createQuery("SELECT r FROM Region r where r.pais.id=?1").setParameter(1,id_pais).getResultList();
         return regiones;

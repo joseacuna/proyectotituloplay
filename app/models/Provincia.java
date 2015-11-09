@@ -25,6 +25,10 @@ public class Provincia extends Model {
         this.nombre = nombre;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
 
     public static List<Provincia> findAllProvinciasByIdRegiones(Long id_region) {
         List<Provincia> provincias = JPA.em().createQuery("select pr from Provincia pr where pr.region.id=?1").setParameter(1,id_region).getResultList();

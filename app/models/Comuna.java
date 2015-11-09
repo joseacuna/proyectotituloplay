@@ -21,6 +21,11 @@ public class Comuna extends Model{
         this.nombre = nombre;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     public static List<Comuna> findAllComunasByIdProvincias(Long id_provincia) {
         List<Comuna> comunas= JPA.em().createQuery("select co FROM Comuna co where co.provincia.id=?1").setParameter(1,id_provincia).getResultList();
         return comunas;

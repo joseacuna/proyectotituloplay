@@ -22,4 +22,9 @@ public class Establecimiento extends EntidadAutoLongAltKey {
     public Region region;
     @ManyToOne(fetch = FetchType.LAZY)
     public Pais pais;
+
+    @Override
+    public String toString() {
+        return nombreEdificio;
+    }
 }

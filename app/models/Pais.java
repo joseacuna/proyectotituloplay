@@ -61,6 +61,11 @@ public class Pais  extends Model{
         this.nacionalidad = nacionalidad;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     public static List<Pais> findAllPais() {
         List<Pais> allPaises = JPA.em().createQuery("select p FROM Pais p").getResultList();
         return allPaises;
