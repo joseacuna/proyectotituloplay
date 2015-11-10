@@ -14,6 +14,17 @@
       <foreign-key name="fkaf3f47c78b1b7a92" columns="id_provincia" ref-table="provincia" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk13e3284653df1756" table="establecimiento" schema="public" catalog="proyectotitulo" columns="id_comuna"/>
     </table>
+    <table name="departamento" schema="public" catalog="proyectotitulo" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="alt_key" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nombre" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_establecimiento" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="id_tipo_de_departamento" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="departamento_pkey" columns="id"/>
+      <foreign-key name="fkb3fd2c04d26e09c4" columns="id_establecimiento" ref-table="establecimiento" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkb3fd2c041317ee38" columns="id_tipo_de_departamento" ref-table="tipo_de_departamento" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="departamento_alt_key_key" unique="true" columns="alt_key"/>
+    </table>
     <table name="dependencia" schema="public" catalog="proyectotitulo" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="alt_key" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -39,7 +50,9 @@
       <foreign-key name="fk13e32846b2589f7e" columns="id_pais" ref-table="pais" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk13e328468b1b7a92" columns="id_provincia" ref-table="provincia" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk13e3284685f0d5b0" columns="id_region" ref-table="region" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fkb3fd2c04d26e09c4" table="departamento" schema="public" catalog="proyectotitulo" columns="id_establecimiento"/>
       <exported-key name="fkcf6b9486d26e09c4" table="dependencia" schema="public" catalog="proyectotitulo" columns="id_establecimiento"/>
+      <exported-key name="fkd78fcfacd26e09c4" table="persona" schema="public" catalog="proyectotitulo" columns="id_establecimiento"/>
       <index name="establecimiento_alt_key_key" unique="true" columns="alt_key"/>
     </table>
     <table name="hibernate_sequence" schema="public" catalog="proyectotitulo" type="SEQUENCE">
@@ -65,6 +78,25 @@
       <exported-key name="fk13e32846b2589f7e" table="establecimiento" schema="public" catalog="proyectotitulo" columns="id_pais"/>
       <exported-key name="fkc84826f4b2589f7e" table="region" schema="public" catalog="proyectotitulo" columns="id_pais"/>
     </table>
+    <table name="persona" schema="public" catalog="proyectotitulo" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="alt_key" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="anexo" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="apellido_materno" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="apellido_paterno" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="genero" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombres" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rut" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telefono" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_establecimiento" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="id_tipo_usuario" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="id_usuario" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="persona_pkey" columns="id"/>
+      <foreign-key name="fkd78fcfacd26e09c4" columns="id_establecimiento" ref-table="establecimiento" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkd78fcfac32b2a97d" columns="id_tipo_usuario" ref-table="tipo_usuario" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkd78fcfaca6da5794" columns="id_usuario" ref-table="usuario" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="persona_alt_key_key" unique="true" columns="alt_key"/>
+    </table>
     <table name="provincia" schema="public" catalog="proyectotitulo" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="nombre" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -85,6 +117,18 @@
       <foreign-key name="fkc84826f4b2589f7e" columns="id_pais" ref-table="pais" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk13e3284685f0d5b0" table="establecimiento" schema="public" catalog="proyectotitulo" columns="id_region"/>
       <exported-key name="fkdf613bad85f0d5b0" table="provincia" schema="public" catalog="proyectotitulo" columns="id_region"/>
+    </table>
+    <table name="seq_departamento" schema="public" catalog="proyectotitulo" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
     </table>
     <table name="seq_dependencia" schema="public" catalog="proyectotitulo" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
@@ -109,6 +153,79 @@
       <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="seq_persona" schema="public" catalog="proyectotitulo" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="seq_tipo_de_departamento" schema="public" catalog="proyectotitulo" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="seq_tipo_usuario" schema="public" catalog="proyectotitulo" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="seq_usuario" schema="public" catalog="proyectotitulo" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="tipo_de_departamento" schema="public" catalog="proyectotitulo" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="activo" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="tipo" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="tipo_de_departamento_pkey" columns="id"/>
+      <exported-key name="fkb3fd2c041317ee38" table="departamento" schema="public" catalog="proyectotitulo" columns="id_tipo_de_departamento"/>
+    </table>
+    <table name="tipo_usuario" schema="public" catalog="proyectotitulo" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="alt_key" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tipo_usuario" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="tipo_usuario_pkey" columns="id"/>
+      <exported-key name="fkd78fcfac32b2a97d" table="persona" schema="public" catalog="proyectotitulo" columns="id_tipo_usuario"/>
+      <index name="tipo_usuario_alt_key_key" unique="true" columns="alt_key"/>
+    </table>
+    <table name="usuario" schema="public" catalog="proyectotitulo" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="alt_key" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="usuario" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="usuario_pkey" columns="id"/>
+      <exported-key name="fkd78fcfaca6da5794" table="persona" schema="public" catalog="proyectotitulo" columns="id_usuario"/>
+      <index name="usuario_alt_key_key" unique="true" columns="alt_key"/>
     </table>
   </data-source>
 </component>

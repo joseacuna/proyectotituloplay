@@ -20,7 +20,7 @@
     </annotationProcessing>
   </component>
   <component name="CopyrightManager" default="" />
-  <component name="DataSourceManagerImpl" format="xml" hash="3311307533">
+  <component name="DataSourceManagerImpl" format="xml" hash="2580417654">
     <data-source source="LOCAL" name="PostgreSQL - proyectotitulo@localhost" uuid="6af558f4-acf0-4eaa-b945-77990052e7d0">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

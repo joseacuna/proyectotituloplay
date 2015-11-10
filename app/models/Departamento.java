@@ -13,6 +13,9 @@ public class Departamento extends EntidadAutoLongAltKey {
     public String nombre;
 
     @ManyToOne
+    public TipoDeDepartamento tipoDeDepartamento;
+
+    @ManyToOne
     public Establecimiento establecimiento;
 
     public String getNombre() {
